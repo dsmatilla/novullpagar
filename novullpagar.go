@@ -17,7 +17,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	"github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 const tgbotToken = "PUT_BOT_TOKEN_HERE"
@@ -27,7 +27,15 @@ const datasource = "https://www.meneame.net/sneakme_rss?q=%23novullpagar&w=posts
 const dynamodbRegion = "eu-west-1"
 const dynamodbTable = "NoVullPagar"
 
-var hostsAllowed = [5]string{"humblebundle.com", "www.humblebundle.com", "www.gog.com", "gog.com", "store.steampowered.com"}
+var hostsAllowed = [7]string{
+	"humblebundle.com",
+	"www.humblebundle.com",
+	"www.gog.com",
+	"gog.com",
+	"store.steampowered.com",
+	"epicgames.com",
+	"www.epicgames.com",
+}
 
 // Post structure for DynamoDB post table
 type Post struct {
