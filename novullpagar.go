@@ -27,7 +27,7 @@ const datasource = "https://www.meneame.net/sneakme_rss?q=%23novullpagar&w=posts
 const dynamodbRegion = "eu-west-1"
 const dynamodbTable = "NoVullPagar"
 
-var hostsAllowed = [7]string{
+var hostsAllowed = [11]string{
 	"humblebundle.com",
 	"www.humblebundle.com",
 	"www.gog.com",
@@ -35,6 +35,10 @@ var hostsAllowed = [7]string{
 	"store.steampowered.com",
 	"epicgames.com",
 	"www.epicgames.com",
+	"origin.com",
+	"www.origin.com",
+	"register.ubisoft.com",
+	"ubisoft.com",
 }
 
 // Post structure for DynamoDB post table
