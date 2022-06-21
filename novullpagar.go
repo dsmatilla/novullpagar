@@ -23,11 +23,11 @@ import (
 const tgbotToken = "PUT_BOT_TOKEN_HERE"
 const tgbotLogID = -170311435
 const tgbotChanID = -1001347869136
-const datasource = "https://www.meneame.net/sneakme_rss?q=%23novullpagar&w=posts&h=&o=date&u="
+const datasource = "https://old.meneame.net/sneakme_rss?q=%23novullpagar&w=posts&h=&o=date&u="
 const dynamodbRegion = "eu-west-1"
 const dynamodbTable = "NoVullPagar"
 
-var hostsAllowed = [11]string{
+var hostsAllowed = [12]string{
 	"humblebundle.com",
 	"www.humblebundle.com",
 	"www.gog.com",
@@ -35,6 +35,7 @@ var hostsAllowed = [11]string{
 	"store.steampowered.com",
 	"epicgames.com",
 	"www.epicgames.com",
+	"store.epicgames.com",
 	"origin.com",
 	"www.origin.com",
 	"register.ubisoft.com",
@@ -106,7 +107,7 @@ func getLastPost() int {
 		tglog(err.Error())
 	}
 	post := Post{}
-	err = dynamodbattribute.UnmarshalMap(result.Item, &post)
+	dynamodbattribute.UnmarshalMap(result.Item, &post)
 	return post.PostID
 }
 
@@ -158,7 +159,7 @@ func process() {
 	rss := Rss{}
 	decoder := xml.NewDecoder(resp.Body)
 	decoder.Strict = false
-	err = decoder.Decode(&rss)
+	decoder.Decode(&rss)
 
 	lastPostID := getLastPost()
 	newlastPostID := lastPostID
